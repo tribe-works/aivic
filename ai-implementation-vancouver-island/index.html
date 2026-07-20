@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Implementation Vancouver Island | AI Tools and Workflow Help | AiVic</title>
+<meta name="description" content="AiVic helps Vancouver Island businesses plan practical AI implementation: workflow review, AI tool recommendations, risk checks, and a clear first-step roadmap.">
+<link rel="canonical" href="https://aivic.ca/ai-implementation-vancouver-island/">
+<meta property="og:title" content="AI Implementation Vancouver Island | AI Tools and Workflow Help | AiVic">
+<meta property="og:description" content="AiVic helps Vancouver Island businesses plan practical AI implementation: workflow review, AI tool recommendations, risk checks, and a clear first-step roadmap.">
+<meta property="og:url" content="https://aivic.ca/ai-implementation-vancouver-island/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink:#12211d;
+    --ink-soft:#3d514b;
+    --deep:#0b2f2c;         /* deep evergreen/ocean */
+    --teal:#0e7c6f;         /* pacific teal */
+    --teal-bright:#16a394;
+    --ocean:#1d6a94;        /* ocean blue */
+    --coral:#ec6a4b;        /* sunset coral (CTA) */
+    --coral-dark:#d9573a;
+    --amber:#f2a65a;        /* sunset amber */
+    --sand:#f8f4ec;         /* warm page bg */
+    --sand-2:#f1ebde;
+    --card:#ffffff;
+    --line:#e6ddcd;
+    --shadow:0 18px 40px -20px rgba(11,47,44,.28);
+    --shadow-sm:0 8px 22px -14px rgba(11,47,44,.35);
+    --radius:22px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
+    color:var(--ink);
+    background:var(--sand);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Barlow Condensed','IBM Plex Sans',system-ui,sans-serif;font-weight:600;line-height:1.02;letter-spacing:.005em;text-wrap:balance}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  .eyebrow{
+    font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--teal);display:inline-flex;align-items:center;gap:.55rem;
+  }
+  .eyebrow::before{content:"";width:26px;height:2px;background:var(--teal);border-radius:2px;opacity:.6}
+  a{color:inherit;text-decoration:none}
+
+  /* buttons */
+  .btn{
+    display:inline-flex;align-items:center;gap:.6rem;justify-content:center;
+    font-weight:600;font-size:1.02rem;padding:1rem 1.7rem;border-radius:999px;
+    cursor:pointer;border:none;transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+  }
+  .btn-primary{background:var(--coral);color:#fff;box-shadow:0 12px 26px -12px rgba(236,106,75,.75)}
+  .btn-primary:hover{background:var(--coral-dark);transform:translateY(-2px);box-shadow:0 16px 30px -12px rgba(236,106,75,.85)}
+  .btn-ghost{background:rgba(255,255,255,.14);color:#fff;border:1.5px solid rgba(255,255,255,.5);backdrop-filter:blur(4px)}
+  .btn-ghost:hover{background:rgba(255,255,255,.24);transform:translateY(-2px)}
+  .btn-dark{background:var(--deep);color:#fff}
+  .btn-dark:hover{background:#0f3f3a;transform:translateY(-2px)}
+  .btn .arrow{transition:transform .18s ease}
+  .btn:hover .arrow{transform:translateX(3px)}
+
+  /* nav */
+  header.nav{position:absolute;top:0;left:0;right:0;z-index:20}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:22px 24px;max-width:1120px;margin:0 auto}
+  .brand{display:flex;align-items:center;gap:.6rem;color:#fff;font-family:'IBM Plex Sans',system-ui,sans-serif;font-weight:700;font-size:1.35rem;letter-spacing:-.01em}
+  .brand-logo{height:36px;width:auto;display:block}
+  .nav-links{display:flex;align-items:center;gap:2rem}
+  .nav-links a{color:rgba(255,255,255,.85);font-size:.95rem;font-weight:500}
+  .nav-links a:hover{color:#fff}
+  .nav-cta{padding:.6rem 1.15rem;border-radius:999px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35)}
+  @media(max-width:760px){.nav-links a:not(.nav-cta){display:none}}
+
+  /* hero */
+  .hero{position:relative;min-height:96vh;display:flex;align-items:center;overflow:hidden;color:#fff}
+  .hero-bg{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+  .hero-bg svg{width:100%;height:100%;display:block}
+  .hero-fade{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(6,32,30,.72) 0%,rgba(6,32,30,.35) 48%,rgba(6,32,30,.05) 100%)}
+  .hero-content{position:relative;z-index:3;padding:120px 0 90px}
+  .hero h1{font-size:clamp(2.2rem,5.4vw,4.15rem);max-width:26ch;text-shadow:0 2px 30px rgba(0,0,0,.25)}
+  .hero h1 br{display:block}
+  .hero .lead{font-size:clamp(1.08rem,1.7vw,1.32rem);max-width:46ch;margin:1.5rem 0 2.2rem;color:rgba(255,255,255,.92);font-weight:400;text-wrap:pretty}
+  .hero .lead strong{color:#fff;font-weight:600}
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.13);
+    border:1px solid rgba(255,255,255,.3);padding:.5rem 1rem;border-radius:999px;
+    font-size:.86rem;font-weight:500;margin-bottom:1.9rem;backdrop-filter:blur(6px);
+  }
+  .hero-badge .pin{width:16px;height:16px;flex:none}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+  .hero-trust{margin-top:1.9rem;display:flex;flex-wrap:wrap;gap:.6rem 1.4rem;font-size:.92rem;color:rgba(255,255,255,.88)}
+  .hero-trust span{display:inline-flex;align-items:center;gap:.5rem}
+  .hero-trust .tick{color:var(--amber)}
+
+  /* section frame */
+  section{position:relative}
+  .band{padding:96px 0}
+  .center{text-align:center}
+  .section-head{max-width:640px;margin:0 auto 3rem}
+  .section-head.left{margin-left:0;text-align:left}
+  h2.title{font-size:clamp(2rem,3.6vw,2.9rem);margin-top:.8rem}
+  .sub{color:var(--ink-soft);font-size:1.1rem;margin-top:1rem;text-wrap:pretty}
+
+  /* wave divider */
+  .wave{display:block;width:100%;height:70px}
+
+  /* problem */
+  .problem{background:var(--deep);color:#f4efe4}
+  .problem .eyebrow{color:var(--amber)}
+  .problem .eyebrow::before{background:var(--amber)}
+  .problem h2{color:#fff}
+  .problem .sub{color:rgba(244,239,228,.75)}
+  .prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3rem}
+  .prob-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:1.9rem}
+  .prob-ic{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem}
+  .prob-ic svg{width:23px;height:23px}
+  .prob-ic.amber{background:rgba(242,166,90,.16);color:var(--amber)}
+  .prob-ic.teal{background:rgba(22,163,148,.16);color:var(--teal-bright)}
+  .prob-ic.coral{background:rgba(236,106,75,.16);color:var(--coral)}
+  .prob-card h3{font-size:1.22rem;color:#fff;margin-bottom:.5rem}
+  .prob-card p{color:rgba(244,239,228,.72);font-size:.98rem}
+  @media(max-width:820px){.prob-grid{grid-template-columns:1fr}}
+
+  /* offer */
+  .offer-card{
+    background:linear-gradient(160deg,#ffffff,#fbf7ef);border:1px solid var(--line);
+    border-radius:30px;box-shadow:var(--shadow);padding:clamp(2rem,4vw,3.4rem);
+    display:grid;grid-template-columns:1.15fr .85fr;gap:2.6rem;align-items:center;
+  }
+  .price-tag{display:flex;align-items:baseline;gap:.5rem;margin:1rem 0 .4rem}
+  .price-tag .amt{font-family:'Barlow Condensed','IBM Plex Sans',system-ui,sans-serif;font-size:3.4rem;font-weight:600;color:var(--deep);line-height:1}
+  .price-tag .cur{font-size:1.1rem;font-weight:600;color:var(--teal)}
+  .price-tag .per{color:var(--ink-soft);font-size:1rem}
+  .offer-list{list-style:none;margin:1.4rem 0 0}
+  .offer-list li{display:flex;gap:.7rem;padding:.45rem 0;color:var(--ink-soft)}
+  .offer-list li .tick{color:var(--teal-bright);flex:none;margin-top:.25rem}
+  .guarantee{
+    background:var(--deep);color:#fff;border-radius:var(--radius);padding:2rem;text-align:center;position:relative;overflow:hidden;
+  }
+  .guarantee .seal{width:52px;height:52px;margin:0 auto .8rem;display:block}
+  .guarantee h3{font-size:1.5rem;color:#fff;margin-bottom:.6rem}
+  .guarantee p{color:rgba(255,255,255,.82);font-size:.98rem}
+  .guarantee .fine{margin-top:1rem;font-size:.82rem;color:var(--amber);font-weight:600;letter-spacing:.03em}
+  @media(max-width:860px){.offer-card{grid-template-columns:1fr;gap:1.8rem}}
+
+  /* steps */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.3rem;margin-top:3rem}
+  .step{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:1.8rem;position:relative;box-shadow:var(--shadow-sm)}
+  .step .num{font-family:'Barlow Condensed','IBM Plex Sans',system-ui,sans-serif;font-size:1rem;font-weight:700;color:#fff;background:var(--teal);width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem}
+  .step:nth-child(2) .num{background:var(--ocean)}
+  .step:nth-child(3) .num{background:var(--amber);color:var(--deep)}
+  .step:nth-child(4) .num{background:var(--coral)}
+  .step h3{font-size:1.18rem;margin-bottom:.45rem}
+  .step p{font-size:.95rem;color:var(--ink-soft)}
+  .step .tm{display:inline-block;margin-top:.9rem;font-size:.78rem;font-weight:600;color:var(--teal);background:rgba(14,124,111,.09);padding:.28rem .7rem;border-radius:999px}
+  @media(max-width:920px){.steps{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.steps{grid-template-columns:1fr}}
+
+  /* report */
+  .report{background:var(--sand-2)}
+  .report-inner{display:grid;grid-template-columns:.9fr 1.1fr;gap:3rem;align-items:center}
+  .report-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .rep-item{background:#fff;border:1px solid var(--line);border-radius:16px;padding:1.2rem 1.3rem;box-shadow:var(--shadow-sm)}
+  .rep-item .ic{color:var(--teal-bright);margin-bottom:.5rem;display:block}
+  .rep-item strong{display:block;font-size:1rem;margin-bottom:.2rem;color:var(--ink)}
+  .rep-item span{font-size:.88rem;color:var(--ink-soft)}
+  @media(max-width:860px){.report-inner{grid-template-columns:1fr;gap:2rem}}
+  @media(max-width:460px){.report-grid{grid-template-columns:1fr}}
+
+  /* ladder */
+  .ladder-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3rem}
+  .rung{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:2rem;box-shadow:var(--shadow-sm);transition:transform .2s ease,box-shadow .2s ease}
+  .rung:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .rung .tag{font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
+  .rung h3{font-size:1.32rem;margin:.6rem 0 .5rem}
+  .rung p{font-size:.95rem;color:var(--ink-soft)}
+  .rung .price{margin-top:1rem;font-family:'Barlow Condensed','IBM Plex Sans',system-ui,sans-serif;font-weight:600;color:var(--deep);font-size:1.15rem}
+  .rung.feature{background:linear-gradient(165deg,var(--deep),#123f39);color:#fff;border:none}
+  .rung.feature .tag{color:var(--amber)}
+  .rung.feature h3,.rung.feature .price{color:#fff}
+  .rung.feature p{color:rgba(255,255,255,.8)}
+  @media(max-width:860px){.ladder-grid{grid-template-columns:1fr}}
+
+  /* island / why */
+  .island{background:var(--deep);color:#fff;overflow:hidden;position:relative}
+  .island .wrap{position:relative;z-index:2}
+  .island-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center}
+  .island .eyebrow{color:var(--amber)}
+  .island .eyebrow::before{background:var(--amber)}
+  .island h2{color:#fff}
+  .island p.big{font-size:1.15rem;color:rgba(255,255,255,.85);margin-top:1.2rem}
+  .island .stats{display:flex;gap:2.4rem;margin-top:2rem;flex-wrap:wrap}
+  .island .stat .n{font-family:'Barlow Condensed','IBM Plex Sans',system-ui,sans-serif;font-size:2.2rem;font-weight:600;color:var(--amber)}
+  .island .stat .l{font-size:.9rem;color:rgba(255,255,255,.72)}
+  .island-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);padding:2rem}
+  .island-card p{color:rgba(255,255,255,.82);font-style:italic;font-size:1.05rem;font-family:'IBM Plex Sans',system-ui,sans-serif}
+  .island-card .who{margin-top:1.2rem;font-style:normal;font-family:'IBM Plex Sans';font-size:.9rem;color:var(--amber);font-weight:600}
+  @media(max-width:860px){.island-inner{grid-template-columns:1fr;gap:2rem}}
+
+  /* final cta */
+  .final{padding:100px 0;text-align:center}
+  .final h2{font-size:clamp(2.1rem,4vw,3.2rem);max-width:18ch;margin:0 auto}
+  .final .sub{max-width:52ch;margin:1.2rem auto 2.4rem}
+  .final-actions{display:flex;flex-direction:column;align-items:center;gap:1rem}
+  .soft{font-size:.98rem;color:var(--ink-soft)}
+  .soft a{color:var(--teal);font-weight:600;border-bottom:1.5px solid rgba(14,124,111,.35)}
+  .soft a:hover{border-color:var(--teal)}
+
+  /* footer */
+  footer{background:var(--deep);color:rgba(255,255,255,.75);padding:48px 0 40px}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;flex-wrap:wrap}
+  .foot-brand{display:flex;align-items:center;gap:.6rem;color:#fff;font-family:'IBM Plex Sans',system-ui,sans-serif;font-size:1.2rem;font-weight:700}
+  .foot-brand-logo{height:30px;width:auto;display:block}
+  .foot-meta{font-size:.9rem;text-align:right}
+  .foot-meta a{color:var(--amber)}
+  @media(max-width:600px){.foot-inner{flex-direction:column;text-align:center}.foot-meta{text-align:center}}
+
+  /* assessment dropdown */
+  .nav-item{position:relative;display:flex;align-items:center}
+  .nav-item>a{display:inline-flex;align-items:center;gap:.25rem}
+  .nav-item.dropdown>a::after{content:"▾";font-size:.72rem;opacity:.75;margin-left:.2rem}
+  .dropdown-menu{position:absolute;top:calc(100% + .75rem);left:0;min-width:178px;background:rgba(11,47,44,.96);border:1px solid rgba(255,255,255,.18);box-shadow:0 16px 36px -18px rgba(0,0,0,.45);border-radius:14px;padding:.45rem;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .16s ease,transform .16s ease,visibility .16s ease;backdrop-filter:blur(8px)}
+  .nav-item.dropdown:hover .dropdown-menu,.nav-item.dropdown:focus-within .dropdown-menu{opacity:1;visibility:visible;transform:translateY(0)}
+  .dropdown-menu a{display:block;padding:.62rem .75rem;border-radius:10px;white-space:nowrap;color:rgba(255,255,255,.9);font-size:.92rem}
+  .dropdown-menu a:hover{background:rgba(255,255,255,.1);color:#fff}
+  @media(max-width:760px){.nav-item.dropdown{display:none}.dropdown-menu{display:none}}
+
+
+  /* ai tools directory */
+  .tools-hero .hero h1{max-width:32ch}
+  .tool-controls{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin:2rem 0 0}
+  .tool-chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:.55rem .9rem;font-size:.9rem;color:var(--ink-soft);font-weight:600}
+  .tools-grid{display:grid;grid-template-columns:1fr;gap:1.15rem;margin-top:2rem}
+  .tool-card{background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow-sm);padding:1.45rem;display:grid;grid-template-columns:92px 1fr;gap:1.2rem;align-items:start}
+  .tool-logo-wrap{width:76px;height:76px;border-radius:20px;background:linear-gradient(160deg,#fff,#f4efe4);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-sm);position:sticky;top:1rem}
+  .tool-logo{width:46px;height:46px;border-radius:12px;object-fit:contain}
+  .tool-kicker{display:flex;flex-wrap:wrap;align-items:center;gap:.55rem;margin-bottom:.45rem}
+  .tool-rank{font-family:'Barlow Condensed','IBM Plex Sans',system-ui,sans-serif;font-size:1.35rem;font-weight:700;color:var(--teal)}
+  .tool-category{font-size:.74rem;text-transform:uppercase;letter-spacing:.11em;color:var(--ink-soft);font-weight:700;background:var(--sand-2);border-radius:999px;padding:.24rem .55rem}
+  .tool-card h3{font-size:clamp(1.45rem,2.3vw,2rem);margin:.1rem 0 .55rem;color:var(--deep)}
+  .problem-solution{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:.8rem 0 1rem}
+  .ps-box{border-radius:16px;padding:.9rem 1rem;border:1px solid var(--line)}
+  .ps-box.problem{background:#fff3ef;color:#8a321f}
+  .ps-box.solution{background:#eaf7f4;color:#0b5f55}
+  .ps-label{display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.13em;font-weight:800;margin-bottom:.25rem;opacity:.78}
+  .ps-text{display:block;font-family:'Barlow Condensed','IBM Plex Sans',system-ui,sans-serif;font-size:1.55rem;line-height:1;font-weight:700;text-wrap:balance}
+  .tool-details{color:var(--ink-soft);font-size:1rem;text-wrap:pretty}
+  .tool-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin-top:1rem}
+  .meta-box{background:var(--sand);border:1px solid var(--line);border-radius:14px;padding:.8rem}
+  .meta-box strong{display:block;color:var(--deep);font-size:.86rem;margin-bottom:.2rem}
+  .meta-box span{font-size:.9rem;color:var(--ink-soft)}
+  .tool-link{display:inline-flex;margin-top:1rem;color:var(--teal);font-weight:800;border-bottom:2px solid rgba(14,124,111,.25)}
+  .tool-link:hover{border-color:var(--teal)}
+  .quick-winners{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}
+  .winner{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:1.1rem;color:#fff}
+  .winner strong{display:block;font-family:'Barlow Condensed';font-size:1.4rem;line-height:1;margin-bottom:.35rem;color:#fff}
+  .winner span{color:rgba(255,255,255,.75);font-size:.92rem}
+  @media(max-width:900px){.quick-winners{grid-template-columns:repeat(2,1fr)}.tool-meta{grid-template-columns:1fr}.problem-solution{grid-template-columns:1fr}}
+  @media(max-width:620px){.tool-card{grid-template-columns:1fr}.tool-logo-wrap{position:static}.quick-winners{grid-template-columns:1fr}}
+
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://aivic.ca/#business",
+      "name": "AiVic",
+      "url": "https://aivic.ca/",
+      "email": "sean@aivic.ca",
+      "description": "AiVic helps Victoria and Vancouver Island business owners identify and implement practical AI tools that save time, reduce admin, and fit real workflows.",
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Victoria"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Vancouver Island"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "British Columbia"
+        }
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Victoria",
+        "addressRegion": "BC",
+        "addressCountry": "CA"
+      },
+      "priceRange": "$499-$999 CAD + GST"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://aivic.ca/ai-implementation-vancouver-island/#service",
+      "name": "A clear path from AI noise to useful workflow change.",
+      "provider": {
+        "@id": "https://aivic.ca/#business"
+      },
+      "areaServed": [
+        "Victoria BC",
+        "Vancouver Island",
+        "British Columbia"
+      ],
+      "description": "AiVic helps Vancouver Island businesses plan practical AI implementation: workflow review, AI tool recommendations, risk checks, and a clear first-step roadmap.",
+      "url": "https://aivic.ca/ai-implementation-vancouver-island/"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://aivic.ca/ai-implementation-vancouver-island/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is AI implementation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AI implementation means putting AI tools into real business workflows with clear rules, responsibilities, and expected outcomes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can AiVic help outside Victoria?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. AiVic is based in Victoria and serves Vancouver Island businesses including Saanich, Langford, Sidney, Cowichan, Nanaimo, and nearby communities."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to know AI first?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The assessment is designed for business owners who want a practical first step without learning every tool themselves."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need custom software?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually not at the start. Most small businesses should begin with proven tools, workflow changes, and clear rules before considering custom development."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<!-- ===================== NAV ===================== -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="/"><img src="data:image/png;base64,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" alt="AiVic" class="brand-logo">AiVic</a>
+    <nav class="nav-links">
+      <a href="/#how">How it works</a>
+      <div class="nav-item dropdown">
+        <a href="/#offer">The assessment</a>
+        <div class="dropdown-menu">
+          <a href="/ai-tools/">AI Tools</a>
+        </div>
+      </div>
+      <a href="/ai-consultant-victoria-bc/">AI consulting</a>
+      <a href="/ai-implementation-vancouver-island/">Implementation</a>
+      <a href="/#island">Why AiVic</a>
+      <a href="/#book" class="nav-cta">Request assessment</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="hero-bg">
+    <!-- Vancouver Island dusk: layered mountains, sunset, ocean -->
+    <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Vancouver Island coastline at dusk">
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#0b2f2c"/>
+          <stop offset="42%" stop-color="#1a5a6b"/>
+          <stop offset="70%" stop-color="#e08a5a"/>
+          <stop offset="100%" stop-color="#f2b070"/>
+        </linearGradient>
+        <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#f4c07e"/>
+          <stop offset="30%" stop-color="#4d7f89"/>
+          <stop offset="100%" stop-color="#123f42"/>
+        </linearGradient>
+        <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#fff2d6" stop-opacity=".95"/>
+          <stop offset="45%" stop-color="#ffd39a" stop-opacity=".55"/>
+          <stop offset="100%" stop-color="#ffd39a" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <rect width="1440" height="620" fill="url(#sky)"/>
+      <circle cx="1050" cy="470" r="230" fill="url(#sunGlow)"/>
+      <circle cx="1050" cy="470" r="74" fill="#ffe9c2"/>
+
+      <!-- far range -->
+      <path d="M0 470 L120 430 L260 468 L420 410 L560 460 L720 405 L900 455 L1080 400 L1260 452 L1440 415 L1440 620 L0 620 Z" fill="#2e5f68" opacity=".7"/>
+      <!-- mid range -->
+      <path d="M0 512 L160 470 L320 512 L470 452 L640 508 L820 448 L1000 505 L1180 452 L1360 505 L1440 470 L1440 620 L0 620 Z" fill="#22525a" opacity=".85"/>
+      <!-- near range -->
+      <path d="M0 560 L180 512 L360 560 L540 500 L740 558 L940 505 L1160 560 L1340 512 L1440 548 L1440 620 L0 620 Z" fill="#173f43"/>
+
+      <!-- water -->
+      <rect y="620" width="1440" height="280" fill="url(#water)"/>
+      <!-- sun reflection -->
+      <rect x="1010" y="620" width="80" height="280" fill="#ffe1ab" opacity=".22"/>
+      <path d="M980 640 h140 M995 668 h110 M1005 700 h90 M1015 740 h70 M1025 790 h50" stroke="#ffe9c2" stroke-width="4" opacity=".3" stroke-linecap="round"/>
+
+      <!-- foreground treeline silhouette -->
+      <g fill="#0c2b28">
+        <rect y="812" width="1440" height="90"/>
+        <path d="M60 812 l14-54 14 54 z M120 812 l16-64 16 64 z M210 812 l12-46 12 46 z M300 812 l18-70 18 70 z M400 812 l14-54 14 54 z M500 812 l16-60 16 60 z M600 812 l12-48 12 48 z M700 812 l18-72 18 72 z M820 812 l14-56 14 56 z M930 812 l16-62 16 62 z M1040 812 l12-46 12 46 z M1140 812 l18-70 18 70 z M1250 812 l14-54 14 54 z M1350 812 l16-64 16 64 z"/>
+      </g>
+    </svg>
+  </div>
+  <div class="hero-fade"></div>
+
+  <div class="hero-content wrap">
+    <div class="hero-badge">
+      <svg class="pin" viewBox="0 0 24 24" fill="none" stroke="#f2a65a" stroke-width="2"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.4" fill="#f2a65a" stroke="none"/></svg>
+      Island owned &amp; operated · Victoria, BC
+    </div>
+    <h1>AI implementation help for Vancouver Island businesses.</h1>
+    <p class="lead"><strong>AiVic</strong> helps local businesses move from AI curiosity to a practical implementation plan for admin, customer follow-up, reporting, scheduling, quoting, and other real workflows.</p>
+    <div class="hero-actions">
+      <a href="mailto:sean@aivic.ca?subject=AiVic Founding Client Assessment" class="btn btn-primary book-link">Request a Founding Client Assessment <span class="arrow">→</span></a>
+      <a href="/#offer" class="btn btn-ghost">See the assessment</a>
+    </div>
+    <div class="hero-trust">
+      <span><span class="tick">✦</span> AI implementation planning for Vancouver Island businesses</span>
+      <span><span class="tick">✦</span> Discovery call + written assessment + follow-up review</span>
+      <span><span class="tick">✦</span> Founding Client Program: first 3 at $499 CAD + GST</span>
+    </div>
+  </div>
+</section>
+
+<!-- wave -->
+<svg class="wave" viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 40 C240 8 480 8 720 34 C960 60 1200 60 1440 30 L1440 70 L0 70 Z" fill="#0b2f2c"/></svg>
+
+<!-- ===================== SERVICE DETAIL ===================== -->
+<section class="band problem">
+  <div class="wrap">
+    <div class="section-head left">
+      <span class="eyebrow">Local AI help</span>
+      <h2 class="title">A clear path from AI noise to useful workflow change.</h2>
+      <p class="sub">Implementation should begin with the safest, highest-value workflow — not a giant transformation project or a stack of disconnected apps.</p>
+    </div>
+    <div class="prob-grid">
+      <div class="prob-card">
+        <div class="prob-ic amber"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6h14c0 6-5 7-7 10 2 3 7 4 7 10H9c0-6 5-7 7-10-2-3-7-4-7-10Z"/><path d="M13 23.4c1-1 2-1 3 0s2 1 3 0"/></svg></div>
+        <h3>Find the first useful workflow</h3>
+        <p>We look for the AI use case that is concrete, safe, valuable, and realistic to start.</p>
+      </div>
+      <div class="prob-card">
+        <div class="prob-ic teal"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 5 L21.5 14.5 H17.5 L23.5 23 H8.5 L14.5 14.5 H10.5 Z"/><line x1="16" y1="23" x2="16" y2="27.5"/></svg></div>
+        <h3>Avoid tool chaos</h3>
+        <p>Instead of comparing dozens of apps, you get a shortlist tied to your work, budget, and team.</p>
+      </div>
+      <div class="prob-card">
+        <div class="prob-ic coral"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 25 L23 20"/><path d="M7 25 L18 6"/><circle cx="18" cy="6" r="1.9" fill="currentColor" stroke="none"/><circle cx="23" cy="20" r="1.9" fill="none"/></svg></div>
+        <h3>Start safely</h3>
+        <p>We flag sensitive data and operational risks before you put customer or business information into AI tools.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ASSESSMENT CTA ===================== -->
+<section class="band" id="offer">
+  <div class="wrap">
+    <div class="offer-card">
+      <div>
+        <span class="eyebrow">Start with clarity</span>
+        <h2 class="title">The AiVic AI Business Assessment</h2>
+        <p style="color:var(--ink-soft);margin-top:1rem">A focused assessment that identifies 3 to 7 practical AI/software recommendations, ranked by impact, difficulty, cost, and implementation priority.</p>
+        <div class="price-tag">
+          <span class="cur">$</span><span class="amt">499</span><span class="per">CAD + GST · first 3 businesses</span>
+        </div>
+        <p style="color:var(--ink-soft)">Regular price: $999 CAD + GST. This is a founding-client validation program, not a generic discount.</p>
+        <a href="mailto:sean@aivic.ca?subject=AiVic Founding Client Assessment" class="btn btn-dark book-link" style="margin-top:1.6rem">Request a founding assessment <span class="arrow">→</span></a>
+      </div>
+      <div class="guarantee">
+        <svg class="seal" viewBox="0 0 48 48" fill="none" stroke="#f2a65a" stroke-width="2.2"><circle cx="24" cy="24" r="18"/><path d="M16 24l6 6 12-12" stroke="#fff"/></svg>
+        <h3>The Practical Recommendation Guarantee</h3>
+        <p>If AiVic cannot identify at least one practical recommendation reasonably expected to save about <strong>5 hours per week</strong> when properly implemented, the assessment fee will be refunded.</p>
+        <div class="fine">Based on recommendations, not guaranteed implementation results</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="band" id="faq" style="background:var(--sand-2)">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">Questions</span>
+      <h2 class="title">What business owners ask before implementing AI.</h2>
+    </div>
+    <div class="report-grid">
+      <div class="rep-item"><strong>What is AI implementation?</strong><span>AI implementation means putting AI tools into real business workflows with clear rules, responsibilities, and expected outcomes.</span></div>
+      <div class="rep-item"><strong>Can AiVic help outside Victoria?</strong><span>Yes. AiVic is based in Victoria and serves Vancouver Island businesses including Saanich, Langford, Sidney, Cowichan, Nanaimo, and nearby communities.</span></div>
+      <div class="rep-item"><strong>Do I need to know AI first?</strong><span>No. The assessment is designed for business owners who want a practical first step without learning every tool themselves.</span></div>
+      <div class="rep-item"><strong>Do I need custom software?</strong><span>Usually not at the start. Most small businesses should begin with proven tools, workflow changes, and clear rules before considering custom development.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FINAL CTA ===================== -->
+<section class="final" id="book">
+  <div class="wrap">
+    <span class="eyebrow" style="justify-content:center">Ready when you are</span>
+    <h2 style="margin-top:.8rem">Request one of the first three founding assessments.</h2>
+    <p class="sub">Email us with your business name and the operational work you most want to reduce. We will confirm fit, booking, and payment details before requesting business information.</p>
+    <div class="final-actions">
+      <a href="mailto:sean@aivic.ca?subject=AiVic Founding Client Assessment" class="btn btn-primary book-link" style="font-size:1.1rem;padding:1.1rem 2.2rem">Request a Founding Client Assessment <span class="arrow">→</span></a>
+      <p class="soft">Not quite ready? <a href="mailto:sean@aivic.ca" class="email-link">Send us a question first</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap foot-inner">
+    <div class="foot-brand"><img src="data:image/png;base64,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" alt="AiVic" class="foot-brand-logo">AiVic</div>
+    <div class="foot-meta">
+      Island owned &amp; operated · Victoria, BC<br>
+      <a href="mailto:sean@aivic.ca" class="email-link">sean@aivic.ca</a> · aivic.ca<br>
+      Please do not send sensitive personal information in your first email. Privacy policy, service agreement, and data-handling terms should be reviewed before full commercial data handling.
+    </div>
+  </div>
+</footer>
+
+<script>
+  /* ============================================================
+     EDIT THESE TWO LINES TO GO LIVE:
+     ============================================================ */
+  const BOOKING_URL   = "";                              // Optional: paste real Cal.com / Calendly link when ready
+  const CONTACT_EMAIL = "sean@aivic.ca";                  // Confirm before publishing
+
+  /* wires the values into every button/link, no need to edit below */
+  document.querySelectorAll('.book-link').forEach(function(a){
+    if (BOOKING_URL) {
+      a.setAttribute('href', BOOKING_URL);
+    } else {
+      a.setAttribute('href', 'mailto:' + CONTACT_EMAIL + '?subject=AiVic Founding Client Assessment');
+    }
+  });
+  document.querySelectorAll('.email-link').forEach(function(a){
+    a.setAttribute('href', 'mailto:' + CONTACT_EMAIL);
+    if (a.textContent.includes('@')) a.textContent = CONTACT_EMAIL;
+  });
+</script>
+</body>
+</html>
