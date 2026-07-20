@@ -2,4 +2,4 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/hwvucjaext/aivic.ca/
-    - /bin/cp -R index.html robots.txt sitemap.xml favicon.ico site.webmanifest apple-touch-icon.png favicon-16x16.png favicon-32x32.png android-chrome-192x192.png android-chrome-512x512.png ai-tools ai-consultant-victoria-bc ai-implementation-vancouver-island $DEPLOYPATH
+    - /bin/cp -R index.html robots.txt sitemap.xml favicon.ico site.webmanifest apple-touch-icon.png favicon-16x16.png favicon-32x32.png android-chrome-192x192.png android-chrome-512x512.png ai-tools the-lead-leak ai-consultant-victoria-bc ai-implementation-vancouver-island $DEPLOYPATH
